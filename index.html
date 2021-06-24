@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+}
+body{
+    display: grid;
+    place-items: center;
+    background: url(https://cdn.pixabay.com/photo/2017/03/28/22/55/night-photograph-2183637_1280.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cal{
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+form .result{
+    height: 80px;
+    width: 100%;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+.result input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 0 20px;
+    text-align: right;
+    font-weight: 500;
+    color: #303030;
+    pointer-events: none;
+    font-family: sans-serif;
+}
+form .buttons{
+    text-align: center;
+    padding: 30px 0 0 0;
+}
+.buttons input[type="button"]{
+    height: 56px;
+    width: 56px;
+    font-size: 23px;
+    margin: 5px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    color: #333333;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+.buttons input[type="button"]:focus{
+    color: #000;
+    transform: scale(0.9);
+    box-shadow:inset 2px 2px 5px rgba(0,0,0,0.5),
+               inset -3px -3px 7px rgba(255,255,255, 0.05);
+} 
+</style>
+</head>
+<body>
+
+<div class="cal">
+    <form action="#" name="form">
+        <div class="result">
+            <input class="text" name="disp" id="disp">
+        </div>
+        <div class="buttons">
+            <div class="row">
+                <input type="button" value="7" name="v7" onclick="val(v7.value)">
+                <input type="button" value="8" name="v8" onclick="val(v8.value)">
+                <input type="button" value="9" name="v9" onclick="val(v9.value)">
+                <input type="button" value="+" name="add" onclick="val(add.value)">
+            </div>
+            <div class="row">
+                <input type="button" value="4" name="v4" onclick="val(v4.value)">
+                <input type="button" value="5" name="v5" onclick="val(v5.value)">
+                <input type="button" value="6" name="v6" onclick="val(v6.value)">
+                <input type="button" value="-" name="sub" onclick="val(sub.value)">
+            </div>
+            <div class="row">
+                <input type="button" value="1" name="v1" onclick="val(v1.value)">
+                <input type="button" value="2" name="v2" onclick="val(v2.value)">
+                <input type="button" value="3" name="v3" onclick="val(v3.value)">
+                <input type="button" value="*" name="mult" onclick="val(mult.value)">
+            </div>
+            <div class="row">
+                <input type="button" value="0" name="v0" onclick="val(v0.value)">
+                <input type="button" value="." name="vdot" onclick="val(vdot.value)">
+                <input type="button" value="/" name="vdiv"  onclick="val(vdiv.value)">
+                <input type="button" title="click two times to clear result" value="=" name="equal" onclick="cal()">
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+function val(result){
+    form.disp.value = form.disp.value + result;
+}
+function cal(){
+    if(form.disp.value == ""){
+        alert("please enter numbers")
+    }else{
+        form.disp.value = eval(form.disp.value);
+    }
+}
+var btn = form.equal;
+btn.addEventListener('dblclick',function(){
+    form.disp.value = "";
+});
+</script>
+    
+</body>
+</html>
